@@ -8,6 +8,9 @@ theme = "PaperMod"
   ShowReadingTime = true
   math = true
 
+[permalinks]
+  posts = "/posts/:title/"
+
 [menu]
   [[menu.main]]
     identifier = "posts"
