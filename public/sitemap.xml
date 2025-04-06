@@ -2,24 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blog/blog/</loc>
+    <loc>http://nmlakra.github.io/blog/blog/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog/clustermolepy/</loc>
+    <loc>http://nmlakra.github.io/blog/blog/clustermolepy/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/</loc>
+    <loc>http://nmlakra.github.io/blog/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/tags/python/</loc>
+    <loc>http://nmlakra.github.io/blog/tags/python/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/tags/single-cell/</loc>
+    <loc>http://nmlakra.github.io/blog/tags/single-cell/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/tags/</loc>
+    <loc>http://nmlakra.github.io/blog/tags/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/categories/</loc>
+    <loc>http://nmlakra.github.io/blog/categories/</loc>
   </url>
 </urlset>
