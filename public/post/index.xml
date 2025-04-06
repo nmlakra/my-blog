@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Python on Nikhil Mark Lakra</title>
-    <link>http://nmlakra.github.io/blog/tags/python/</link>
-    <description>Recent content in Python on Nikhil Mark Lakra</description>
+    <title>Posts on Nikhil Mark Lakra</title>
+    <link>http://nmlakra.github.io/blog/post/</link>
+    <description>Recent content in Posts on Nikhil Mark Lakra</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 05 Apr 2025 12:49:40 +0530</lastBuildDate>
-    <atom:link href="http://nmlakra.github.io/blog/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://nmlakra.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Clustermolepy</title>
       <link>http://nmlakra.github.io/blog/post/clustermolepy/</link>
