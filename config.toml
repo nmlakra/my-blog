@@ -1,4 +1,4 @@
-baseURL = "http://nmlakra.github.io/"
+baseURL = "http://nmlakra.github.io/blog/"
 languageCode = "en-us"
 title = "Nikhil Mark Lakra"
 theme = "PaperMod"
