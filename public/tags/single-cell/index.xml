@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Single-Cell on Nikhil Mark Lakra</title>
-    <link>http://nmlakra.github.io/blog/tags/single-cell/</link>
+    <link>http://nmlakra.github.io/tags/single-cell/</link>
     <description>Recent content in Single-Cell on Nikhil Mark Lakra</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 05 Apr 2025 12:49:40 +0530</lastBuildDate>
-    <atom:link href="http://nmlakra.github.io/blog/tags/single-cell/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://nmlakra.github.io/tags/single-cell/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Clustermolepy</title>
-      <link>http://nmlakra.github.io/blog/posts/clustermolepy/</link>
+      <link>http://nmlakra.github.io/posts/clustermolepy/</link>
       <pubDate>Sat, 05 Apr 2025 12:49:40 +0530</pubDate>
-      <guid>http://nmlakra.github.io/blog/posts/clustermolepy/</guid>
+      <guid>http://nmlakra.github.io/posts/clustermolepy/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;ve worked with single cell data, there is always one random cluster that refuses to be annotated. Which usually leads to a non-trivial amount of hours (if not days) spent on digging through cell marker databases and publications. When I came across the &lt;a href=&#34;https://igordot.github.io/clustermole/&#34;&gt;clustermole R package by Igor Dolgalev&lt;/a&gt;, I was pleasantly surprised at it effectiveness and simplicity. The only issue was that python is  my go to daily driver for most tasks; which also includes single cell analysis. So, I did the only logical thing anyone would; spend my next few weekends writing &lt;code&gt;clustermolepy&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
   </channel>

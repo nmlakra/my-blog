@@ -9,16 +9,16 @@
 <meta name="keywords" content="single-cell, python">
 <meta name="description" content="If you&rsquo;ve worked with single cell data, there is always one random cluster that refuses to be annotated. Which usually leads to a non-trivial amount of hours (if not days) spent on digging through cell marker databases and publications. When I came across the clustermole R package by Igor Dolgalev, I was pleasantly surprised at it effectiveness and simplicity. The only issue was that python is  my go to daily driver for most tasks; which also includes single cell analysis. So, I did the only logical thing anyone would; spend my next few weekends writing clustermolepy.">
 <meta name="author" content="">
-<link rel="canonical" href="http://nmlakra.github.io/blog/posts/clustermolepy/">
-<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://nmlakra.github.io/blog/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://nmlakra.github.io/blog/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://nmlakra.github.io/blog/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://nmlakra.github.io/blog/apple-touch-icon.png">
-<link rel="mask-icon" href="http://nmlakra.github.io/blog/safari-pinned-tab.svg">
+<link rel="canonical" href="http://nmlakra.github.io/posts/clustermolepy/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://nmlakra.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://nmlakra.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://nmlakra.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://nmlakra.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="http://nmlakra.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://nmlakra.github.io/blog/posts/clustermolepy/">
+<link rel="alternate" hreflang="en" href="http://nmlakra.github.io/posts/clustermolepy/">
 <noscript>
     <style>
         #theme-toggle,
@@ -55,7 +55,7 @@
         }
 
     </style>
-</noscript><meta property="og:url" content="http://nmlakra.github.io/blog/posts/clustermolepy/">
+</noscript><meta property="og:url" content="http://nmlakra.github.io/posts/clustermolepy/">
   <meta property="og:site_name" content="Nikhil Mark Lakra">
   <meta property="og:title" content="Clustermolepy">
   <meta property="og:description" content="If you’ve worked with single cell data, there is always one random cluster that refuses to be annotated. Which usually leads to a non-trivial amount of hours (if not days) spent on digging through cell marker databases and publications. When I came across the clustermole R package by Igor Dolgalev, I was pleasantly surprised at it effectiveness and simplicity. The only issue was that python is my go to daily driver for most tasks; which also includes single cell analysis. So, I did the only logical thing anyone would; spend my next few weekends writing clustermolepy.">
@@ -80,13 +80,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://nmlakra.github.io/blog/posts/"
+      "item": "http://nmlakra.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Clustermolepy",
-      "item": "http://nmlakra.github.io/blog/posts/clustermolepy/"
+      "item": "http://nmlakra.github.io/posts/clustermolepy/"
     }
   ]
 }
@@ -108,14 +108,14 @@
   "dateModified": "2025-04-05T12:49:40+05:30",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://nmlakra.github.io/blog/posts/clustermolepy/"
+    "@id": "http://nmlakra.github.io/posts/clustermolepy/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Nikhil Mark Lakra",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://nmlakra.github.io/blog/favicon.ico"
+      "url": "http://nmlakra.github.io/favicon.ico"
     }
   }
 }
@@ -152,7 +152,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://nmlakra.github.io/blog/" accesskey="h" title="Nikhil Mark Lakra (Alt + H)">Nikhil Mark Lakra</a>
+            <a href="http://nmlakra.github.io/" accesskey="h" title="Nikhil Mark Lakra (Alt + H)">Nikhil Mark Lakra</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -178,7 +178,7 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://nmlakra.github.io/blog/posts/" title="Posts">
+                <a href="http://nmlakra.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
@@ -218,7 +218,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># the newly assigned cluster ids are present in the leiden column</span>
 </span></span><span style="display:flex;"><span>sc<span style="color:#f92672">.</span>pl<span style="color:#f92672">.</span>umap(adata, color<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;louvain&#39;</span>, <span style="color:#e6db74">&#39;leiden&#39;</span>], legend_loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;on data&#39;</span>, save<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pbmc3k_leiden.png&#34;</span>)
 </span></span></code></pre></div><p><strong>Ouput:</strong>
-<img alt="PBMC 3K UMAP" loading="lazy" src="/blog/posts/clustermolepy/pbmc3k_umap.png"></p>
+<img alt="PBMC 3K UMAP" loading="lazy" src="/posts/clustermolepy/pbmc3k_umap.png"></p>
 <h3 id="identify-cluster-de-gene-for-enricher">Identify Cluster DE Gene for Enricher<a hidden class="anchor" aria-hidden="true" href="#identify-cluster-de-gene-for-enricher">#</a></h3>
 <p>We need to identify marker genes for each Leiden cluster. We&rsquo;ll use Scanpy&rsquo;s <code>rank_genes_groups</code> function to perform differential gene expression and find genes that are upregulated in each cluster compared to the others. <code>clustermolepy</code> provides a wrapper around Enrichr API to find enrichment of genes in gene sets.</p>
 <p>We will use B cells for this example, which is a well defined population in pbmc3k dataset. Using <code>scanpy.rank_gene_groups</code> we can identifity the top 25 up-regulated genes in each cluster</p>
@@ -287,7 +287,7 @@ Name: names, dtype: object
 <h2 id="how-does-enrichment-work">How Does Enrichment Work?<a hidden class="anchor" aria-hidden="true" href="#how-does-enrichment-work">#</a></h2>
 <p>It’s worth briefly mentioning how the enrichment is actually calculated under the hood. At the core of this is a statistical test that checks whether your list of marker genes overlaps with known cell type–specific gene sets more than you&rsquo;d expect by random chance.</p>
 <p>This is done using <a href="https://en.wikipedia.org/wiki/Fisher%27s_exact_test">Fisher’s exact test</a>, which builds a simple 2×2 contingency table like this:</p>
-<p><img alt="Contingency Table" loading="lazy" src="/blog/posts/clustermolepy/fisher_excat_test.png"></p>
+<p><img alt="Contingency Table" loading="lazy" src="/posts/clustermolepy/fisher_excat_test.png"></p>
 <p>From this table, Fisher&rsquo;s Exact Test is used to calculate a p-value; basically asking: If I randomly picked genes, what&rsquo;s the chance I’d see this much overlap?</p>
 <p>Here&rsquo;s the formula behind it:</p>
 $$
@@ -325,15 +325,15 @@ In this example, we&rsquo;ll convert human gene symbols to mouse gene symbols us
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://nmlakra.github.io/blog/tags/single-cell/">Single-Cell</a></li>
-      <li><a href="http://nmlakra.github.io/blog/tags/python/">Python</a></li>
+      <li><a href="http://nmlakra.github.io/tags/single-cell/">Single-Cell</a></li>
+      <li><a href="http://nmlakra.github.io/tags/python/">Python</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://nmlakra.github.io/blog/">Nikhil Mark Lakra</a></span> · 
+        <span>&copy; 2025 <a href="http://nmlakra.github.io/">Nikhil Mark Lakra</a></span> · 
 
     <span>
         Powered by
