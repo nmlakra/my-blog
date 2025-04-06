@@ -11,11 +11,19 @@ math = true
 tags = ["single-cell", "python"]
 +++
 
-If you've worked with single cell data, there is always one random cluster that refuses to be annotated. Which usually ends up being a non-trival process of digging through bunch of cell type marker databases and publications, while trying to maintain mental sanity. When I came across the clustermole R package by Igor Dolgalev[add link], I was pleasently surprised at it effectiveness and simplicity. The only issue is that python has been my go to daily driver for most of tasks which also includes single cell analysis, I did the only logical thing anyone would; spend my next few weekends writing `clustermolepy`.
+If you've worked with single cell data, there is always one random cluster that refuses to be annotated. Which usually leads to a non-trivial amount of hours (if not days) spent on digging through cell marker databases and publications. When I came across the [clustermole R package by Igor Dolgalev](https://igordot.github.io/clustermole/), I was pleasantly surprised at it effectiveness and simplicity. The only issue was that python is  my go to daily driver for most tasks; which also includes single cell analysis. So, I did the only logical thing anyone would; spend my next few weekends writing `clustermolepy`.
 
 ## Example Usage
 
-Now, `clustermolepy` isn't ment to be a automated cell type annotation tool, but a quick way to explore enrichment of marker genes from different annotation databases. Here's an example of the main usecase, we'll be using the pbmc3k dataset from scanpy for this following example:
+Now, `clustermolepy` isn't ment to be an automated cell type annotation tool, but a quick way to explore enrichment of marker genes from different annotation databases. Here's an example of the main usecase, we'll be using the pbmc3k dataset from scanpy for this following example.
+
+First, we need to install clustermolepy, which can be done using pip using:
+```bash
+pip install git+https://github.com/nmlakra/clustermole-py.git
+```
+
+
+Next we can import `scanpy` and `clustermolepy` and setup our data for this example:
 
 **Code:**
 ```python
@@ -40,9 +48,9 @@ sc.pl.umap(adata, color=['louvain', 'leiden'], legend_loc='on data', save="pbmc3
 
 ### Identify Cluster DE Gene for Enricher
 
-We need to identify marker genes for each Leiden cluster. We'll use Scanpy's `rank_genes_groups` function to perform differential gene expression and find genes that are upregulated in each cluster compared to the others clustermolepy provides a wrapper around Enrichr API to find enrichment of genes in gene sets
+We need to identify marker genes for each Leiden cluster. We'll use Scanpy's `rank_genes_groups` function to perform differential gene expression and find genes that are upregulated in each cluster compared to the others. `clustermolepy` provides a wrapper around Enrichr API to find enrichment of genes in gene sets.
 
-We will start with the B cells, which is a well defined population in pbmc3k dataset. Using `scanpy.rank_gene_groups` we can identifity the top 25 up-regulated genes in each cluster
+We will use B cells for this example, which is a well defined population in pbmc3k dataset. Using `scanpy.rank_gene_groups` we can identifity the top 25 up-regulated genes in each cluster
 
 **Code:**
 ```python
@@ -106,7 +114,7 @@ Under the hood, `get_cell_type_enrichment()` is multi-threaded, making it effici
 * Mouse_Gene_Atlas
 ```
 
-Using `get_cell_type_enrichment()` is incredibly straightforward.  Using this with our Leiden Cluster 1 marker genes:
+Using `get_cell_type_enrichment()` is incredibly straightforward. Using this with our Leiden Cluster 1 marker genes:
 
 **Code:**
 ```python
@@ -128,13 +136,13 @@ enrichr.get_cell_type_enrichment().head()
 
 ## How Does Enrichment Work?
 
-Before we wrap up, it’s worth briefly mentioning how the enrichment is actually calculated under the hood. At the core of this is a statistical test that checks whether your list of marker genes overlaps with known cell type–specific gene sets more than you'd expect by random chance.
+It’s worth briefly mentioning how the enrichment is actually calculated under the hood. At the core of this is a statistical test that checks whether your list of marker genes overlaps with known cell type–specific gene sets more than you'd expect by random chance.
 
-This is done using something called a Fisher’s exact test, which builds a simple 2×2 table like this:
+This is done using [Fisher’s exact test](https://en.wikipedia.org/wiki/Fisher%27s_exact_test), which builds a simple 2×2 contingency table like this:
 
-![Contentgincy Table](./fisher_excat_test.png)
+![Contingency Table](./fisher_excat_test.png)
 
-From this table, Fisher's Exact Test is used to calculate a p-value — basically asking: If I randomly picked genes, what's the chance I’d see this much overlap?
+From this table, Fisher's Exact Test is used to calculate a p-value; basically asking: If I randomly picked genes, what's the chance I’d see this much overlap?
 
 Here's the formula behind it:
 
@@ -142,10 +150,45 @@ $$
 p = \frac{{\binom{a + b}{a} \binom{c + d}{c}}}{{\binom{N}{a + c}}}
 $$
 
+---
 
-\[
-\begin{aligned}
-KL(\hat{y} || y) &= \sum_{c=1}^{M}\hat{y}_c \log{\frac{\hat{y}_c}{y_c}} \\
-JS(\hat{y} || y) &= \frac{1}{2}(KL(y||\frac{y+\hat{y}}{2}) + KL(\hat{y}||\frac{y+\hat{y}}{2}))
-\end{aligned}
-\]
+## Extra Utilities
+Beyond just sending your marker genes to Enrichr, clustermolepy comes with a couple of neat utilities that make your life easier when working with gene sets.
+
+### Fuzzy Matching for Enrichr Libraries
+If you've ever used the Enrichr web interface, you know how long list of libraries are. `clustermolepy` adds a small but super helpful feature: fuzzy matching for library names. So if you forget whether it's called `"CellMarker_2024"` or `"cell_marker_human_2023"`, you can just pass a partial name and let the fuzzy match do the work:
+
+**Code:**
+```python
+enrichr.get_libraries(name="cellmarker")  # fuzzy search!
+```
+
+**Output:**
+```
+    geneCoverage  genesPerTerm                libraryName                                         link  numTerms  categoryId
+0         14167          80.0  CellMarker_Augmented_2021        http://biocc.hrbmu.edu.cn/CellMarker/      1097           5
+1         12642          30.0            CellMarker_2024  http://bio-bigdata.hrbmu.edu.cn/CellMarker/      1692           5
+```
+
+### Gene Name Conversion via Biomart
+`clustermolepy` also provides a convenient way to convert gene symbols between different species using the `biomart` module. This is particularly useful when you want to compare gene sets or perform enrichment analysis across different organisms.
+In this example, we'll convert human gene symbols to mouse gene symbols using the `biomart` module. We'll use the `convert_gene_names()` function to fetch the gene conversion data and then apply it to our list of human genes.
+
+**Code**:
+```python
+from clustermolepy.utils import Biomart
+
+# Convert gene names from human to mouse
+bm = Biomart(verbose=False)
+result = bm.convert_gene_names(
+    genes=["TP53", "CD4", "FOXP3"], # Example gene names
+    from_organism="hsapiens", # Human
+    to_organism="mmusculus" # Mouse
+)
+print(result)
+```
+
+**Output**:
+```
+{'CD4': ['Cd4'], 'FOXP3': ['Foxp3'], 'TP53': ['Trp53']}
+```

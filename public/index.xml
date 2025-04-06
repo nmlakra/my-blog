@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>Nikhil Mark Lakra</title>
+    <link>http://localhost:46843/</link>
+    <description>Recent content on Nikhil Mark Lakra</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 06 Apr 2025 10:24:36 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:46843/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World</title>
-      <link>http://localhost:1313/post/hello-world/</link>
+      <link>http://localhost:46843/post/hello-world/</link>
       <pubDate>Sun, 06 Apr 2025 10:24:36 +0530</pubDate>
-      <guid>http://localhost:1313/post/hello-world/</guid>
+      <guid>http://localhost:46843/post/hello-world/</guid>
       <description>&lt;p&gt;Hello World!&lt;/p&gt;</description>
     </item>
     <item>
       <title>Clustermolepy</title>
-      <link>http://localhost:1313/blog/clustermolepy/</link>
+      <link>http://localhost:46843/blog/clustermolepy/</link>
       <pubDate>Sat, 05 Apr 2025 12:49:40 +0530</pubDate>
-      <guid>http://localhost:1313/blog/clustermolepy/</guid>
-      <description>&lt;p&gt;If you&amp;rsquo;ve worked with single cell data, there is always one random cluster that refuses to be annotated. Which usually ends up being a non-trival process of digging through bunch of cell type marker databases and publications, while trying to maintain mental sanity. When I came across the clustermole R package by Igor Dolgalev[add link], I was pleasently surprised at it effectiveness and simplicity. The only issue is that python has been my go to daily driver for most of tasks which also includes single cell analysis, I did the only logical thing anyone would; spend my next few weekends writing &lt;code&gt;clustermolepy&lt;/code&gt;.&lt;/p&gt;</description>
+      <guid>http://localhost:46843/blog/clustermolepy/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;ve worked with single cell data, there is always one random cluster that refuses to be annotated. Which usually leads to a non-trivial amount of hours (if not days) spent on digging through cell marker databases and publications. When I came across the &lt;a href=&#34;https://igordot.github.io/clustermole/&#34;&gt;clustermole R package by Igor Dolgalev&lt;/a&gt;, I was pleasantly surprised at it effectiveness and simplicity. The only issue was that python is  my go to daily driver for most tasks; which also includes single cell analysis. So, I did the only logical thing anyone would; spend my next few weekends writing &lt;code&gt;clustermolepy&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

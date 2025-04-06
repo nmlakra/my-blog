@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/post/hello-world/</loc>
+    <loc>http://localhost:46843/post/hello-world/</loc>
     <lastmod>2025-04-06T10:24:36+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://localhost:46843/</loc>
     <lastmod>2025-04-06T10:24:36+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>http://localhost:46843/post/</loc>
     <lastmod>2025-04-06T10:24:36+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/</loc>
+    <loc>http://localhost:46843/blog/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/clustermolepy/</loc>
+    <loc>http://localhost:46843/blog/clustermolepy/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/python/</loc>
+    <loc>http://localhost:46843/tags/python/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/single-cell/</loc>
+    <loc>http://localhost:46843/tags/single-cell/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://localhost:46843/tags/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>http://localhost:46843/categories/</loc>
   </url>
 </urlset>
