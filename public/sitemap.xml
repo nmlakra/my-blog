@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/post/hello-world/</loc>
+    <loc>https://nmlakra.github.io/post/hello-world/</loc>
     <lastmod>2025-04-06T10:24:36+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://nmlakra.github.io/</loc>
     <lastmod>2025-04-06T10:24:36+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>https://nmlakra.github.io/post/</loc>
     <lastmod>2025-04-06T10:24:36+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/</loc>
+    <loc>https://nmlakra.github.io/blog/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/clustermolepy/</loc>
+    <loc>https://nmlakra.github.io/blog/clustermolepy/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/python/</loc>
+    <loc>https://nmlakra.github.io/tags/python/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/single-cell/</loc>
+    <loc>https://nmlakra.github.io/tags/single-cell/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://nmlakra.github.io/tags/</loc>
     <lastmod>2025-04-05T12:49:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://nmlakra.github.io/categories/</loc>
   </url>
 </urlset>
