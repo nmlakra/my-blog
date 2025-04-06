@@ -1,6 +1,6 @@
-baseURL = "http://localhost:1313/"
+baseURL = "http://nmlakra.github.io/blog/"
 languageCode = "en-us"
-title = "My Blog"
+title = "Nikhil Mark Lakra"
 theme = "PaperMod"
 
 [params]
@@ -16,9 +16,9 @@ theme = "PaperMod"
     weight = 1
 
   [[menu.main]]
-    identifier = "posts"
-    name = "Posts"
-    url = "/posts/"
+    identifier = "blogs"
+    name = "Blogs"
+    url = "/blog/"
     weight = 2
 
 [markup]
@@ -29,6 +29,4 @@ theme = "PaperMod"
         [markup.goldmark.extensions.passthrough.delimiters]
           block = [['\[', '\]'], ['$$', '$$']]
           inline = [['\(', '\)']]
-[params]
-  math = true
 

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on Nikhil Mark Lakra</title>
-    <link>https://nmlakra.github.io/tags/</link>
-    <description>Recent content in Tags on Nikhil Mark Lakra</description>
+    <title>Tags on My Blog</title>
+    <link>http://localhost:1313/blog/tags/</link>
+    <description>Recent content in Tags on My Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 05 Apr 2025 12:49:40 +0530</lastBuildDate>
-    <atom:link href="https://nmlakra.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python</title>
-      <link>https://nmlakra.github.io/tags/python/</link>
+      <link>http://localhost:1313/blog/tags/python/</link>
       <pubDate>Sat, 05 Apr 2025 12:49:40 +0530</pubDate>
-      <guid>https://nmlakra.github.io/tags/python/</guid>
+      <guid>http://localhost:1313/blog/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Single-Cell</title>
-      <link>https://nmlakra.github.io/tags/single-cell/</link>
+      <link>http://localhost:1313/blog/tags/single-cell/</link>
       <pubDate>Sat, 05 Apr 2025 12:49:40 +0530</pubDate>
-      <guid>https://nmlakra.github.io/tags/single-cell/</guid>
+      <guid>http://localhost:1313/blog/tags/single-cell/</guid>
       <description></description>
     </item>
   </channel>
