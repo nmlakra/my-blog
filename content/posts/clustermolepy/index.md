@@ -1,5 +1,5 @@
 +++
-title = "Clustermolepy"
+title = "Single-Cell Annotation with Enrichr and clustermolepy"
 date = "2025-04-05T12:49:40+05:30"
 math = true
 
@@ -11,18 +11,40 @@ math = true
 tags = ["single-cell", "python"]
 +++
 
-If you've worked with single cell data, there is always one random cluster that refuses to be annotated. Which usually leads to a non-trivial amount of hours spent on digging through cell marker databases and publications. When I came across the [clustermole R package by Igor Dolgalev](https://igordot.github.io/clustermole/), I was pleasantly surprised at it effectiveness and simplicity. The only issue was that python is  my go to daily driver for most tasks; which also includes single cell analysis. So, I did the only logical thing anyone would; spend my next few weekends writing [clustermolepy](https://github.io/nmlakra/clustermole-py).
-## Example Usage
+If you've worked with single-cell data, there is always one random undefined cluster that refuses to be annotated, often leading to a non-trivial number of hours being spent digging through cell marker databases and publications. When I came across the [clustermole R package by Igor Dolgalev](https://igordot.github.io/clustermole/), I was pleasantly surprised at its effectiveness and simplicity. The only issue was that Python is my go-to daily driver for most tasks, which also includes single-cell analysis. So, I did the only logical thing anyone would do, spend my next few weekends writing [clustermolepy](https://github.io/nmlakra/clustermole-py).
 
-Now, `clustermolepy` isn't ment to be an automated cell type annotation tool, but a quick way to explore enrichment of marker genes from different annotation databases. Here's an example of the main usecase, we'll be using the pbmc3k dataset from scanpy for this following example.
+Now, `clustermolepy` isn't meant to be an automated cell type annotation tool, but a quick way to explore the enrichment of genes in your unidentified cluster and query its cell type in different gene set libraries.
+
+---
+
+## How Does Enrichment Work?
+
+It’s worth briefly understanding how the "enrichment" is actually calculated and what happens under the hood. At the core of this is a statistical test that checks whether your list of marker genes overlaps with known cell type–specific gene sets more than you'd expect by random chance.
+
+This is done using [Fisher’s exact test](https://en.wikipedia.org/wiki/Fisher%27s_exact_test), which builds a simple 2×2 contingency table like this:
+
+![Contingency Table](./fisher_excat_test.png)
+
+From this table, Fisher's Exact Test is used to calculate a p-value; basically asking: If I randomly picked genes, what's the chance I’d see this much overlap?
+
+Here's the formula behind it:
+
+$$
+p = \frac{{\binom{a + b}{a} \binom{c + d}{c}}}{{\binom{N}{a + c}}}
+$$
+
+The adjusted p-value is corrected for multiple hypothesis testing using [Benjimini-Hocberg](https://en.wikipedia.org/wiki/False_discovery_rate#Benjamini%E2%80%93Hochberg_procedure). For more details, read the [FAQ section](https://maayanlab.cloud/Enrichr/help#background) of Enricher website!
+
+To illustrate the main use case of `clustermolepy`, let's walk through an example using the well-known pbmc3k dataset from the `scanpy` library.
+
+## Example Usage
 
 First, we need to install clustermolepy, which can be done using pip using:
 ```bash
 pip install git+https://github.com/nmlakra/clustermole-py.git
 ```
 
-
-Next we can import `scanpy` and `clustermolepy` and setup our data for this example:
+Next, we can import `scanpy` and `clustermolepy` and set up our data for this example:
 
 **Code:**
 ```python
@@ -47,9 +69,9 @@ sc.pl.umap(adata, color=['louvain', 'leiden'], legend_loc='on data', save="pbmc3
 
 ### Identify Cluster DE Gene for Enricher
 
-We need to identify marker genes for each Leiden cluster. We'll use Scanpy's `rank_genes_groups` method to perform differential gene expression and find genes that are upregulated in each cluster compared to the others. `clustermolepy` provides a wrapper around Enrichr API to find enrichment of genes in gene sets.
+We need to identify marker genes for each Leiden cluster. We'll use Scanpy's `rank_genes_groups` method to perform differential gene expression and find genes that are upregulated in each cluster compared to the others. `clustermolepy` provides a wrapper around Enrichr API to find the enrichment of genes in gene sets.
 
-We will use B cells for this example, which is a well defined population in pbmc3k dataset. Using `scanpy.tl.rank_gene_groups()` we can identifity the top 25 up-regulated genes in each cluster
+We will use B cells for this example, which is a well-defined population in pbmc3k dataset. Using `scanpy.tl.rank_gene_groups()`, we can identify the top 25 up-regulated genes in each cluster
 
 **Code:**
 ```python
@@ -98,7 +120,7 @@ Now that we have our list of marker genes for each Leiden cluster, we can use `c
 
 `clustermolepy` provides the `get_cell_type_enrichment()` method!  This handy function simplifies the process by automatically querying a curated set of Enrichr libraries that are specifically relevant for cell type identification.
 
-Under the hood, `get_cell_type_enrichment()` is multi-threaded, making it efficient for querying multiple gene sets efficently.  It automatically checks your marker genes against these ten key gene set libraries:
+Under the hood, `get_cell_type_enrichment()` is multi-threaded, making it efficient for querying multiple gene sets efficiently.  It automatically checks your marker genes against these ten key gene set libraries:
 
 ```
 * CellMarker_2024
@@ -117,7 +139,7 @@ Using `get_cell_type_enrichment()` is incredibly straightforward. Using this wit
 
 **Code:**
 ```python
-enrichr = Enrichr(list(b_cell_markers), adj_pval_cutoff=0.05)
+enrichr = Enrichr(list(b_cell_markers), adj_pval_cutoff=0.05) # filter results > 0.05 adjusted p-value
 enrichr.get_cell_type_enrichment().head()
 ```
 
@@ -131,32 +153,27 @@ enrichr.get_cell_type_enrichment().head()
 3        B Cells Naive  2.872640e-15   139.718310     4678.264291                                            [CD79B, CD79A, TCL1A, EAF2, IRF8, CD37, LTB, CD1C, MS4A1]      2.872640e-14            0                     0   PanglaoDB_Augmented_2021
 4       B Cells Memory  2.244502e-15   143.797101     4850.318315                                        [CD79B, CD79A, TCL1A, TNFRSF17, IRF8, CD37, LTB, CD1C, MS4A1]      2.872640e-14            0                     0   PanglaoDB_Augmented_2021
 ```
----
 
-## How Does Enrichment Work?
-
-It’s worth briefly mentioning how the enrichment is actually calculated under the hood. At the core of this is a statistical test that checks whether your list of marker genes overlaps with known cell type–specific gene sets more than you'd expect by random chance.
-
-This is done using [Fisher’s exact test](https://en.wikipedia.org/wiki/Fisher%27s_exact_test), which builds a simple 2×2 contingency table like this:
-
-![Contingency Table](./fisher_excat_test.png)
-
-From this table, Fisher's Exact Test is used to calculate a p-value; basically asking: If I randomly picked genes, what's the chance I’d see this much overlap?
-
-Here's the formula behind it:
-
-$$
-p = \frac{{\binom{a + b}{a} \binom{c + d}{c}}}{{\binom{N}{a + c}}}
-$$
-
-The adjusted p-value is corrected for multiple hypothesis testing using [Benjimini-Hocberg](https://en.wikipedia.org/wiki/False_discovery_rate#Benjamini%E2%80%93Hochberg_procedure). You can read more details in the [FAQ section](https://maayanlab.cloud/Enrichr/help#background) of Enricher website!
+While `get_cell_type_enrichment()` defaults to querying ten curated cell type gene set libraries, you're not locked into those. You can easily provide your own list of Enrichr gene set libraries. Maybe you're working on something niche, or if you just want to query mouse gene set libraries.
+**Code**:
+```python
+gene_sets = ['Mouse_Gene_Atlas', 'Tabula_Muris']
+enrichr.get_cell_type_enrichment(gene_sets).head(3)
+```
+**Output**:
+```
+                 term name       p-value  odds ratio  combined score                       overlapping genes  adjusted p-value  old p-value  old adjusted p-value      gene_set
+0    B Cell Fat CL:0000236  5.171379e-11  138.263889     3274.821222  [CD79B, CD79A, IRF8, CD37, LTB, MS4A1]      1.189417e-09            0                     0  Tabula_Muris
+1  B Cell Liver CL:0000236  4.987222e-09  110.997770     2121.876306        [CD79B, CD79A, CD37, LTB, MS4A1]      3.200987e-08            0                     0  Tabula_Muris
+2   B Cell Lung CL:0000236  5.713558e-09  107.860238     2047.233047        [CD79B, CD79A, CD37, LTB, MS4A1]      3.200987e-08            0                     0  Tabula_Muris
+```
 ---
 
 ## Extra Utilities
-Beyond just sending your marker genes to Enrichr,`clustermolepy`comes with a couple of neat utilities that make your life easier when working with gene sets.
+Beyond just sending your marker genes to Enrichr,`clustermolepy`comes with a couple of utilities for working with gene sets.
 
 ### Fuzzy Matching for Enrichr Libraries
-If you've ever used the Enrichr web interface, you know how long list of libraries are. `clustermolepy` adds a small but super helpful feature: fuzzy matching for library names. So if you forget whether it's called `"CellMarker_2024"` or `"cell_marker_human_2023"`, you can just pass a partial name and let the fuzzy match do the work:
+If you've ever used the Enrichr web interface, you know how many libraries there are. `clustermolepy` adds a small helpful feature: fuzzy matching for library names. So if you forget whether it's called `"CellMarker_2024"` or `"Cell_Marker_2023"`, you can just pass a partial name and let the fuzzy match do the work:
 
 **Code:**
 ```python
